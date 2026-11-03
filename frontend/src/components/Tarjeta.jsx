@@ -1,8 +1,10 @@
 function Tarjeta({ titulo, children }) {
   return (
-    <section className="tarjeta">
-      <h3 className="h5">{titulo}</h3>
-      {children}
+    <section className="card mb-3">
+      <div className="card-body">
+        <h3 className="card-title h5">{titulo}</h3>
+        {children}
+      </div>
     </section>
   )
 }

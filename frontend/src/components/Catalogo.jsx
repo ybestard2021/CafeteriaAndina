@@ -34,23 +34,37 @@ function Catalogo() {
 
   return (
     <section>
-      <h2>Productos</h2>
-      <input
-        placeholder="Buscar producto"
-        value={buscar}
-        onChange={(e) => setBuscar(e.target.value)}
-      />
-      {visibles.length === 0 && <p>No hay productos que coincidan.</p>}
+      <h2 className="mb-3">Productos</h2>
+      <div className="row g-2 mb-3">
+        <div className="col-md-4">
+          <input
+            className="form-control"
+            placeholder="Buscar producto"
+            value={buscar}
+            onChange={(e) => setBuscar(e.target.value)}
+          />
+        </div>
+      </div>
+      {visibles.length === 0 && (
+        <div className="alert alert-secondary">No hay productos que coincidan.</div>
+      )}
       <ProductoLista productos={visibles} />
 
-      <form onSubmit={agregarProducto}>
-        <input placeholder="Nombre" value={nombre}
-               onChange={(e) => setNombre(e.target.value)} />
-        <input type="number" placeholder="Precio" value={precio}
-               onChange={(e) => setPrecio(e.target.value)} />
-        <button type="submit">Registrar producto</button>
+      <h3 className="h5 mt-4">Nuevo producto</h3>
+      <form className="row g-2" onSubmit={agregarProducto}>
+        <div className="col-md-4">
+          <input className="form-control" placeholder="Nombre" value={nombre}
+                 onChange={(e) => setNombre(e.target.value)} />
+        </div>
+        <div className="col-md-3">
+          <input className="form-control" type="number" placeholder="Precio" value={precio}
+                 onChange={(e) => setPrecio(e.target.value)} />
+        </div>
+        <div className="col-md-3">
+          <button className="btn btn-primary" type="submit">Registrar producto</button>
+        </div>
       </form>
-      {error && <p className="error">{error}</p>}
+      {error && <div className="alert alert-danger mt-3 error">{error}</div>}
     </section>
   )
 }
